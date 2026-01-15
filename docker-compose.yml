@@ -20,14 +20,10 @@ services:
       - DASHBOARD_URL=http://localhost:9000/
   dashboard:
     image: ghcr.io/saleor/saleor-dashboard:latest
-    ports:
-      - 80
     restart: unless-stopped
 
   db:
     image: library/postgres:15-alpine
-    ports:
-      - 5432
     restart: unless-stopped
     networks:
       - saleor-backend-tier
@@ -40,8 +36,6 @@ services:
 
   cache:
     image: valkey/valkey:8.1-alpine
-    ports:
-      - 6379
     restart: unless-stopped
     networks:
       - saleor-backend-tier
@@ -66,10 +60,6 @@ services:
 
   jaeger:
     image: jaegertracing/jaeger
-    ports:
-      - "16686"
-      - "4317"
-      - "4318"
     restart: unless-stopped
     networks:
       - saleor-backend-tier
@@ -79,9 +69,6 @@ services:
 
   mailpit:
     image: axllent/mailpit
-    ports:
-      - 1025 # smtp server
-      - 8025 # web ui. Visit http://localhost:8025/ to check emails
     restart: unless-stopped
     networks:
       - saleor-backend-tier
