@@ -32,8 +32,7 @@ services:
     restart: unless-stopped
     environment:
       # The dashboard is a static SPA. It needs the PUBLIC HTTPS url of your API.
-      - API_URI=https://saleor-api.kaisbettaieb.dev/graphql/
-      - APP_MOUNT_URI=/
+      - API_URL=https://saleor-api.kaisbettaieb.dev/graphql/
 
   db:
     image: library/postgres:15-alpine
